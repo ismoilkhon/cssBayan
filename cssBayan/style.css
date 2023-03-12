@@ -1,0 +1,138 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+.outer-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    max-width: 70%;
+    margin: 5%
+}
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+.accordion {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    color:rgb(97, 40, 83);
+}
+.header {
+    display: flex;
+    cursor: pointer;
+    font-size: 2rem;
+    color: rgb(162, 162, 241);
+    justify-content: space-between;
+}
+.item:nth-child(odd){
+    background-color: rgba(128, 128, 128, 0.2);
+}
+input[type="radio" i]{
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.open  {
+    width: 6%;
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    background-image: url('./images/open.png');
+}
+.content {
+    opacity: 0;
+    max-height: 0;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    transition: all 1s ease-in;
+}
+
+.content img {
+    max-width: 60%;
+}
+.accordion input:checked ~ .content {
+    opacity: 1;
+    max-height: 100vh;
+    transition: all 1s ease-in;
+}
+.accordion input:checked  ~ .header {
+    color: rgb(8, 8, 8);
+}
+.item:active .accordion .header {
+    color: rgb(172, 139, 139);
+}
+.item:active .accordion .header .open  {
+    background-image: url('./images/close2.svg');
+    transition: all 0.5s ease-in;
+}
+.item:active .accordion .content img {
+    filter: grayscale(50%);
+}
+.accordion input:checked  + .header .open {
+    background-image: url('./images/close.svg');
+    transition: all 0.5s ease-in;
+}
+.item:checked .accordion .header .open  {
+    opacity: 1;
+}
+  @media screen and (min-width: 1000px) and (hover:hover) {
+    .accordion input:hover  ~ .header {
+        color: rgb(8, 8, 8);
+    }
+    .item-conteiner:hover  .header .open {
+        opacity: 1;
+    }
+    .accordion input:hover  + .header .open{
+        background-image: url('./images/close.svg');
+        transition: all 0.5s ease-in;
+    }
+    .accordion input:hover ~ .content {
+        opacity: 1;
+        max-height: 100vh;
+        transition: all 1s ease-in;
+    } 
+  }
+  @media screen and (min-width: 600px) and (max-width: 999px) {
+    .container {
+        max-width: 70%;
+    }
+    .open  {
+        width: 6%;
+        opacity: 1;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .header {
+        font-size: 1.5rem;
+    }
+    .content img {
+        max-width: 50%;
+    }
+  }
+  @media screen and (min-width: 300px) and (max-width: 599px){
+    .container {
+        max-width: 90%;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .header {
+        font-size: 1rem;
+    }
+    .open  {
+        width: 8%;
+        background-size: 1rem;
+        opacity: 1;
+    }
+    .content img {
+        max-width: 60%;
+    }
+  }
